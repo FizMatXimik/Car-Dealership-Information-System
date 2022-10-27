@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Модели машин</title>
+</head>
+<body>
+
+<div th:each="cmodel : ${cmodels}">
+    <a th:text="${cmodel.getBrand()}">Модель машины</a>
+</div>
+
+<br/>
+<hr/>
+
+<a><button>Добавить новую модель машины</button></a>
+
+</body>
+</html>
