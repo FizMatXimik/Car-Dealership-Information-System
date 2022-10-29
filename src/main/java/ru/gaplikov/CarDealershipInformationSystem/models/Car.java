@@ -47,10 +47,10 @@ public class Car {
 
     @ManyToMany
     @JoinTable(
-            name = "Car_SpareParts",
+            name = "Car_Parts",
             joinColumns = @JoinColumn(name = "car_id"),
-            inverseJoinColumns = @JoinColumn(name = "spareparts_id"))
-    private List<SpareParts> spareParts;
+            inverseJoinColumns = @JoinColumn(name = "parts_id"))
+    private List<Parts> parts;
 
     public Car() {}
 
@@ -136,12 +136,12 @@ public class Car {
         this.manager = manager;
     }
 
-    public List<SpareParts> getSpareParts() {
-        return spareParts;
+    public List<Parts> getParts() {
+        return parts;
     }
 
-    public void setSpareParts(List<SpareParts> spareParts) {
-        this.spareParts = spareParts;
+    public void setParts(List<Parts> parts) {
+        this.parts = parts;
     }
 
     @Override

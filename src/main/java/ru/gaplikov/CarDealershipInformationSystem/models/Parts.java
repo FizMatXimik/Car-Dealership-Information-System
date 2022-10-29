@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "SpareParts")
-public class SpareParts {
+@Table(name = "Parts")
+public class Parts {
 
     @Id
     @Column(name = "id")
@@ -26,12 +26,12 @@ public class SpareParts {
     @Column(name = "installing_cost")
     private int installing_cost;
 
-    @ManyToMany(mappedBy = "spareParts")
+    @ManyToMany(mappedBy = "parts")
     private List<Car> cars;
 
-    public SpareParts() {}
+    public Parts() {}
 
-    public SpareParts(int id, String part_name, int part_cost, int installing_cost) {
+    public Parts(int id, String part_name, int part_cost, int installing_cost) {
         this.id = id;
         this.part_name = part_name;
         this.part_cost = part_cost;
@@ -82,7 +82,7 @@ public class SpareParts {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SpareParts that = (SpareParts) o;
+        Parts that = (Parts) o;
         return id == that.id && part_cost == that.part_cost && installing_cost == that.installing_cost && Objects.equals(part_name, that.part_name);
     }
 
@@ -101,3 +101,4 @@ public class SpareParts {
                 '}';
     }
 }
+

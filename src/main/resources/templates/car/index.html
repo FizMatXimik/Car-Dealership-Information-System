@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Машины</title>
+</head>
+<body>
+
+<div th:each="car : ${cars}">
+    <a th:text="${car.getVin_number() + ', ' + car.getCmodel().getBrand() + ', ' + car.getColor()}">Машина</a>
+</div>
+
+<br/>
+<hr/>
+
+<a><button>Добавить новую машину</button></a>
+
+</body>
+</html>
