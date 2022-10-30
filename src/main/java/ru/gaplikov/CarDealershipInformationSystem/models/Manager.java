@@ -25,18 +25,17 @@ public class Manager {
     @Column(name = "number_sold_cars")
     private int number_sold_cars;
 
-    @Column(name = "work_experience")
-    private String work_experience;
+    @Transient
+    private long work_experience;
 
     @OneToMany(mappedBy = "manager")
     private List<Car> cars;
 
-    public Manager(int id, String fio, Date employment_date, int number_sold_cars, String work_experience) {
+    public Manager(int id, String fio, Date employment_date, int number_sold_cars) {
         this.id = id;
         this.fio = fio;
         this.employment_date = employment_date;
         this.number_sold_cars = number_sold_cars;
-        this.work_experience = work_experience;
     }
 
     public Manager() {}
@@ -73,11 +72,13 @@ public class Manager {
         this.number_sold_cars = number_sold_cars;
     }
 
-    public String getWork_experience() {
-        return work_experience;
+    public long getWork_experience() {
+        long dev = new Date().getTime() - employment_date.getTime();
+        long day = 2592000000L;
+        return dev/day;
     }
 
-    public void setWork_experience(String work_experience) {
+    public void setWork_experience(long work_experience) {
         this.work_experience = work_experience;
     }
 
