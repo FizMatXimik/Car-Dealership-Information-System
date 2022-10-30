@@ -2,6 +2,7 @@ package ru.gaplikov.CarDealershipInformationSystem.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,6 @@ public class Cmodel {
     @Column(name = "brand")
     private String brand;
 
-    @NotEmpty(message = "Базовая стоймость должна быть указана")
     @Column(name = "basic_cost")
     private int basic_cost;
 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" href="/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container-sm main_container">
+        <div class="container-sm main_content">
+            <div class="container-sm">
+                <div class="modal fade" id="nodeEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="nodeEditLabel">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <form th:method="PATCH" th:action="@{/car_models/{id}(id=${cmodel.getId()})}" th:object="${cmodel}">
+                                <div class="modal-header text_dec">
+                                    <h5 class="modal-title" id="nodeAddLabel">Изменение модели</h5>
+                                </div>
+                                <div class="modal-body text_dec">
+                                    <div class="container-fluid">
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="brand" class="col-2 form-label">Название: </label>
+                                            <div class="col-8">
+                                                <input type="text" th:field="*{brand}" id="brand">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">brand ошибка</div>
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="basic_cost" class="col-2 form-label">Стоймость: </label>
+                                            <div class="col-8">
+                                                <input type="text" th:field="*{basic_cost}" id="basic_cost">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('basic_cost')}" th:errors="*{basic_cost}">basic_cost ошибка</div>
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="basic_cost" class="col-2 form-check-label">Наличие: </label>
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" th:field="*{stock_availability}" id="stock_availability">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('stock_availability')}" th:errors="*{stock_availability}">stock_availability ошибка</div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="/car_models"><button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button></a>
+                                    <button type="submit" class="btn btn-success">Обновить</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(window).on('load', function() {
+        $('#nodeEdit').modal('show');
+    });
+</script>
+</body>
+</html>
