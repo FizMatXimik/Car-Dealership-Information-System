@@ -57,7 +57,6 @@
                         <div class="list-group doc_table">
                             <a class="list-group-item list-group-item-action">
                                 <div class="row fw-bold">
-                                    <div class="col">ID</div>
                                     <div class="col">Марка</div>
                                     <div class="col">Базовая стоймость</div>
                                     <div class="col">Наличие</div>
@@ -68,7 +67,6 @@
                                 <div th:each="cmodel : ${cmodels}">
                                     <div class="list-group-item list-group-item-action">
                                         <div class="row" style="display: flex;">
-                                            <div th:text="${cmodel.getId()}" class="col"></div>
                                             <div th:text="${cmodel.getBrand()}" class="col"></div>
                                             <div th:text="${cmodel.getBasic_cost()}" class="col"></div>
                                             <div th:text="${cmodel.isStock_availability()}?'Есть на складе':'Нет на складе'" th:style="${cmodel.isStock_availability()}?'color:black':'color:red'" class="col"></div>

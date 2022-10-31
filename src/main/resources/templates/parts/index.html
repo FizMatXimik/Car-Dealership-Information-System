@@ -49,7 +49,7 @@
                         <h1 class="doc_title_text">Запчасти</h1>
                     </div>
                     <div class="col-3">
-                        <a href="/car_models/new"><button type="button" data-bs-toggle="modal" class="btn btn-lg btn-primary btn_big_width"><h3>Добавить запчасть</h3></button></a>
+                        <a href="/parts/new"><button type="button" data-bs-toggle="modal" class="btn btn-lg btn-primary btn_big_width"><h3>Добавить запчасть</h3></button></a>
                     </div>
                 </div>
                 <div class="row">
@@ -57,7 +57,6 @@
                         <div class="list-group doc_table">
                             <a class="list-group-item list-group-item-action">
                                 <div class="row fw-bold">
-                                    <div class="col">ID</div>
                                     <div class="col">Наименование</div>
                                     <div class="col">Цена</div>
                                     <div class="col">Стоймость установки</div>
@@ -68,7 +67,6 @@
                                 <div th:each="part : ${parts}">
                                     <div class="list-group-item list-group-item-action">
                                         <div class="row" style="display: flex;">
-                                            <div th:text="${part.getId()}" class="col"></div>
                                             <div th:text="${part.getPart_name()}" class="col"></div>
                                             <div th:text="${part.getPart_cost() + ' Руб.'}" class="col"></div>
                                             <div th:text="${part.getInstalling_cost() + ' Руб.'}" class="col"></div>

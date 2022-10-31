@@ -18,11 +18,9 @@ public class Parts {
     @Column(name = "part_name")
     private String part_name;
 
-    @NotEmpty(message = "Стоймость должна быть указана")
     @Column(name = "part_cost")
     private int part_cost;
 
-    @NotEmpty(message = "Стоймость установки должна быть указана")
     @Column(name = "installing_cost")
     private int installing_cost;
 

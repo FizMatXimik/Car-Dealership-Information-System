@@ -17,49 +17,49 @@
                 <div class="modal fade" id="nodeAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="nodeAddLabel">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
-                            <form th:method="POST" th:action="@{/car_models}" th:object="${cmodel}">
+                            <form th:method="POST" th:action="@{/parts}" th:object="${parts}">
                                 <div class="modal-header text_dec">
-                                    <h5 class="modal-title" id="nodeAddLabel">Добавление новой модели</h5>
+                                    <h5 class="modal-title" id="nodeAddLabel">Добавление новой запчасти</h5>
                                 </div>
                                 <div class="modal-body text_dec">
                                     <div class="container-fluid">
                                         <div class="row mb-3">
                                             <div class="col-1">
                                             </div>
-                                            <label for="brand" class="col-2 form-label">Название: </label>
+                                            <label for="part_name" class="col-2 form-label">Название: </label>
                                             <div class="col-8">
-                                                <input type="text" th:field="*{brand}" id="brand">
+                                                <input type="text" th:field="*{part_name}" id="part_name">
                                             </div>
                                             <div class="col-1">
                                             </div>
                                         </div>
-                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">brand ошибка</div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('part_name')}" th:errors="*{part_name}">part_name ошибка</div>
                                         <div class="row mb-3">
                                             <div class="col-1">
                                             </div>
-                                            <label for="basic_cost" class="col-2 form-label">Стоймость: </label>
+                                            <label for="part_cost" class="col-2 form-label">Стоймость: </label>
                                             <div class="col-8">
-                                                <input type="text" th:field="*{basic_cost}" id="basic_cost">
+                                                <input type="text" th:field="*{part_cost}" id="part_cost">
                                             </div>
                                             <div class="col-1">
                                             </div>
                                         </div>
-                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('basic_cost')}" th:errors="*{basic_cost}">basic_cost ошибка</div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('part_cost')}" th:errors="*{part_cost}">part_cost ошибка</div>
                                         <div class="row mb-3">
                                             <div class="col-1">
                                             </div>
-                                            <label for="stock_availability" class="col-2 form-check-label">Наличие: </label>
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" th:field="*{stock_availability}" id="stock_availability">
+                                            <label for="installing_cost" class="col-2 form-label">Стоймость установки: </label>
+                                            <div class="col-8">
+                                                <input type="text" th:field="*{installing_cost}" id="installing_cost">
                                             </div>
                                             <div class="col-1">
                                             </div>
                                         </div>
-                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('stock_availability')}" th:errors="*{stock_availability}">stock_availability ошибка</div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('installing_cost')}" th:errors="*{installing_cost}">installing_cost ошибка</div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="/car_models"><button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button></a>
+                                    <a href="/parts"><button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button></a>
                                     <button type="submit" class="btn btn-success">Сохранить</button>
                                 </div>
                             </form>

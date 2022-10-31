@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" href="/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Title</title>
+</head>
+<body>
+
+<section>
+    <div class="container-sm main_container">
+        <div class="container-sm main_content">
+            <div class="container-sm">
+                <div class="modal fade" id="nodeAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="nodeAddLabel">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <form th:method="POST" th:action="@{/cars}" th:object="${car}">
+                                <div class="modal-header text_dec">
+                                    <h5 class="modal-title" id="nodeAddLabel">Добавление новой машины</h5>
+                                </div>
+                                <div class="modal-body text_dec">
+                                    <div class="container-fluid">
+
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="vin_number" class="col-2 form-label">VIN-Номер: </label>
+                                            <div class="col-8">
+                                                <input type="text" th:field="*{vin_number}" id="vin_number">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('vin_number')}" th:errors="*{vin_number}">vin_number ошибка</div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="cmodel" class="col-2 form-label">Выберите модель: </label>
+                                            <div class="col">
+                                                <select class="form-select" th:field="*{cmodel}" id="cmodel">
+                                                    <option selected th:value="0">Выберите модель</option>
+                                                    <option th:each="cmodel : ${cmodels}" th:value="${cmodel.getId()}" th:text="${cmodel.getBrand()}"></option>
+                                                </select>
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('cmodel')}" th:errors="*{cmodel}">cmodel ошибка</div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="car_cost" class="col-2 form-label">Стоймость: </label>
+                                            <div class="col-8">
+                                                <input type="text" th:field="*{car_cost}" id="car_cost">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('car_cost')}" th:errors="*{car_cost}">car_cost ошибка</div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="receive_date" class="col-2 form-label">Дата поставки: </label>
+                                            <div class="col-8">
+                                                <input type="date" th:field="*{receive_date}" id="receive_date">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('receive_date')}" th:errors="*{receive_date}">receive_date ошибка</div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="sold" class="col-2 form-check-label">Продана? </label>
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" th:field="*{sold}" id="sold">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('sold')}" th:errors="*{sold}">sold ошибка</div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="manager" class="col-2 form-label">Назначить менеджера: </label>
+                                            <div class="col">
+                                                <select class="form-select" th:field="*{manager}" id="manager">
+                                                    <option selected th:value="0">Выберите менеджера</option>
+                                                    <option th:each="manager : ${managers}" th:value="${manager.getId()}" th:text="${manager.getFio()}"></option>
+                                                </select>
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('manager')}" th:errors="*{manager}">manager ошибка</div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="color" class="col-2 form-label">Цвет: </label>
+                                            <div class="col-8">
+                                                <input type="text" th:field="*{color}" id="color">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">color ошибка</div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-1">
+                                            </div>
+                                            <label for="sold_date" class="col-2 form-label">Дата продажи: </label>
+                                            <div class="col-8">
+                                                <input type="date" th:field="*{sold_date}" id="sold_date">
+                                            </div>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" style="color:red" th:if="${#fields.hasErrors('sold_date')}" th:errors="*{sold_date}">sold_date ошибка</div>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="/cars"><button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button></a>
+                                    <button type="submit" class="btn btn-success">Сохранить</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(window).on('load', function() {
+        $('#nodeAdd').modal('show');
+    });
+</script>
+</body>
+</html>

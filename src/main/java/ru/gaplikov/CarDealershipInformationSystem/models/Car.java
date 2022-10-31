@@ -1,6 +1,8 @@
 package ru.gaplikov.CarDealershipInformationSystem.models;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
@@ -20,15 +22,17 @@ public class Car {
     @Column(name = "vin_number")
     private String vin_number;
 
-    @NotEmpty(message = "Стоймость должна быть указана")
     @Column(name = "car_cost")
     private int car_cost;
 
-    @NotEmpty(message = "Дата поставки должна быть указана")
     @Column(name = "receive_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date receive_date;
 
     @Column(name = "sold_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date sold_date;
 
     @Column(name = "sold")

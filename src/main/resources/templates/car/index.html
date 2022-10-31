@@ -57,14 +57,14 @@
                         <div class="list-group doc_table">
                             <a class="list-group-item list-group-item-action">
                                 <div class="row fw-bold">
-                                    <div class="col">ID</div>
                                     <div class="col">VIN-Номер</div>
                                     <div class="col">Модель</div>
                                     <div class="col">Цвет</div>
                                     <div class="col">Стоймость</div>
                                     <div class="col">Дней на складе</div>
                                     <div class="col">Статус</div>
-                                    <div class="col">Запчасти</div>
+                                    <div class="col">Менедежер</div>
+                                    <div class="col-2">Запчасти</div>
                                     <div class="col-2">Действия</div>
                                 </div>
                             </a>
@@ -72,17 +72,23 @@
                                 <div th:each="car : ${cars}">
                                     <div class="list-group-item list-group-item-action">
                                         <div class="row" style="display: flex;">
-                                            <div th:text="${car.getId()}" class="col"></div>
                                             <div th:text="${car.getVin_number()}" class="col"></div>
                                             <div th:text="${car.getCmodel().getBrand()}" class="col"></div>
                                             <div th:text="${car.getColor()}" class="col"></div>
                                             <div th:text="${car.getCar_cost()}" class="col"></div>
                                             <div th:text="${car.getStock_time()}" class="col"></div>
                                             <div th:text="${car.isSold()}?'Продана':'В наличии'" th:style="${car.isSold()}?'color:green':'color:black'" class="col"></div>
-                                            <div class="dropdown col" style="align-self: center">
+                                            <div th:text="${car.getManager() != null}?${car.getManager().getFio()}:'Не назначен'" class="col"></div>
+                                            <div class="dropdown col-2" style="align-self: center; display: flex">
                                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                     Запчасти
                                                 </button>
+                                                <a th:href="@{/cars/add_parts/{id}(id=${car.getId()})}"><button class="btn btn-outline-success ms-1" type="button">
+                                                    +
+                                                </button></a>
+                                                <a th:href="@{/cars/del_parts/{id}(id=${car.getId()})}"><button class="btn btn-outline-danger ms-1" type="button">
+                                                    -
+                                                </button></a>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                     <li th:each="part : ${car.getParts()}"><div class="dropdown-item" th:text="${part.getPart_name()}"></div></li>
                                                 </ul>
