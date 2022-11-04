@@ -39,11 +39,24 @@ section {
     text-decoration-line: underline;
 }
 
+.home_title_text {
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration-line: underline;
+}
+
 .doc_title {
     padding-top: 40px;
     padding-bottom: 40px;
     align-items: center;
 }
+
+.home_title {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 
 .btn_big_width {
     width: 100%;

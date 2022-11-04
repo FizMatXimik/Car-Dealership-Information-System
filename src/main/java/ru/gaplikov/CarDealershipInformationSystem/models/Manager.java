@@ -1,5 +1,7 @@
 package ru.gaplikov.CarDealershipInformationSystem.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
@@ -20,6 +22,8 @@ public class Manager {
     private String fio;
 
     @Column(name = "employment_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date employment_date;
 
     @Column(name = "number_sold_cars")

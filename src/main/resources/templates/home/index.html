@@ -44,7 +44,68 @@
     <div class="container-sm main_container">
         <div class="container-sm main_content">
             <div class="container-sm">
-                Hello
+                <div class="row align-content-center justify-content-center doc_title">
+                    <div class="col">
+                        <h1 class="home_title_text" style="text-align: center">Данные, необходимые по заданию</h1>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="list-group home_title">
+                                <div class="list-group-item list-group-item-action">
+                                    <div class="row fw-bold">
+                                        <div class="col" style="text-align: center">Наиболее популярная марка по итогам продаж</div>
+                                    </div>
+                                </div>
+                                <div class="list-group list_overflow">
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="row" style="display: flex;">
+                                            <div th:text="${maxPopularCmodel.getBrand()}" class="col" style="text-align: center"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col">
+                            <div class="list-group home_title">
+                                <div class="list-group-item list-group-item-action">
+                                    <div class="row fw-bold">
+                                        <div class="col" style="text-align: center">Менеджер, продавший больше всего автомобилей</div>
+                                    </div>
+                                </div>
+                                <div class="list-group list_overflow">
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="row" style="display: flex;">
+                                            <div th:text="${maxSoldManager.getFio()}" class="col" style="text-align: center"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col">
+                            <div class="list-group home_title">
+                                <div class="list-group-item list-group-item-action">
+                                    <div class="row fw-bold">
+                                        <div class="col" style="text-align: center">Наиболее распространенные тюнинги в зависимости от модели автомобиля</div>
+                                    </div>
+                                </div>
+                                <div class="list-group list_overflow" style="max-height:200px;">
+                                    <div th:each="cmodel_part : ${partsMaxPopularForCmodel}">
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="row" style="display: flex;">
+                                                <div th:text="${cmodel_part.getKey().getBrand()}" class="col"></div>
+                                                <div th:text="${cmodel_part.getValue().getPart_name()}" class="col"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
